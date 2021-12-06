@@ -1,6 +1,21 @@
+import axios from 'axios'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get('/users');
+      setUsers(res.data);
+    }
+
+    fetchData();
+
+  }, []);
+
   return (
     <div>
       <Head>
