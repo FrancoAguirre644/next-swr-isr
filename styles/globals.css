@@ -14,3 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@import url('./header.css');
