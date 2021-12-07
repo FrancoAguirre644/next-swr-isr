@@ -1,9 +1,15 @@
+import Link from "next/link";
+
 const Header = () => {
     return (
         <header>
             <div className="nav wrap">
                 <div className="logo">
-                    <h1>SWR</h1>
+                    <h1>
+                        <Link href="/">
+                            <a>SWR</a>
+                        </Link>
+                    </h1>
                 </div>
 
                 <form>

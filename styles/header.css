@@ -1,7 +1,3 @@
-* {
-    box-sizing: border-box;
-}
-
 header {
     background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
 }
