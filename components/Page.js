@@ -2,9 +2,9 @@ import Card from '../components/Card'
 import Loading from '../components/Loading'
 import { useUsers } from '../actions/users'
 
-const Page = () => {
+const Page = ({ page, limit, search }) => {
 
-    const { users, isLoading, isError } = useUsers();
+    const { users, isLoading, isError } = useUsers(page, limit, search);
 
     if (isError) return <h2>{isError}</h2>;
 
