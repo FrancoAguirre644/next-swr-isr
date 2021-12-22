@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Page from '../components/Page'
+import UserInput from '../components/UserInput'
 import getQueryUrl from '../utils/getQueryUrl'
 
 export default function Home() {
@@ -14,6 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <div className="user_input_container">
+          <UserInput />
+        </div>
         <Page page={page} limit={limit} search={search} />
       </main>
     </div>
