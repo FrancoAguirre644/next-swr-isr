@@ -34,8 +34,8 @@ const UserInput = () => {
             await axios.put(`/users/${id}`, newUser)
         } else {
             router.replace(`/?page=1&limit=${limit}`);
-            mutate([newUser, ...users], false);
-            await axios.post('/users', newUser);
+            const res = await axios.post('/users', newUser);
+            mutate([res.data, ...users], false);
         }
 
         setUserState({
@@ -43,7 +43,9 @@ const UserInput = () => {
             name: '',
             avatar: '',
             createdAt: ''
-        })
+        });
+
+        mutate();
 
     }
 
@@ -57,7 +59,9 @@ const UserInput = () => {
                 <label htmlFor="avatar">Avatar</label>
                 <input type="text" name="avatar" value={avatar} onChange={handleChangeInput} required />
             </div>
-            <button type="submit">Add</button>
+            <button type="submit">
+                {id ? 'Update' : 'Add'}
+            </button>
         </form>
     )
 }
