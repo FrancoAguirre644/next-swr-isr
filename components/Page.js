@@ -1,19 +1,29 @@
 import Card from '../components/Card'
 import Loading from '../components/Loading'
 import { useUsers } from '../actions/users'
+import { useEffect, useState } from 'react'
 
-const Page = ({ page, limit, search }) => {
+const Page = ({ initUsers, page, limit, search }) => {
 
+    const [data, setData] = useState(initUsers);
+    const [loaded, setLoaded] = useState(false);
     const { users, isLoading, isError } = useUsers(page, limit, search);
 
-    if (isError) return <h2>{isError}</h2>;
+    useEffect(() => {
+        if(users) {
+            setData(users);
+            setLoaded(true);
+        }
+    }, [users]);
 
-    if (isLoading) return <Loading />
+    if (loaded && isError) return <h2>{isError}</h2>;
+
+    if (loaded && isLoading) return <Loading />
 
     return (
         <div className="card_container">
             {
-                users.map(user => (
+                data?.map(user => (
                     <Card key={user.id} user={user} />
                 ))
             }
